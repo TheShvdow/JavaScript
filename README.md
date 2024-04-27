@@ -1,2 +1,2 @@
 # JavaScript
-repository des exercices en Js à ODC
+repository des exercices en JS à ODC
