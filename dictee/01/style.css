@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    text-transform: capitalize;
+    position: relative;
+}
+html, body {
+    height: 100%;
+    margin: 0   ;
+}
+
+
+h1 {
+    position: relative;
+    top: -5%;
+    color: azure;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 0 10px;
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(7.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.container {
+    position: relative;
+    width: 25vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
+    border: 1px solid rgb(79, 13, 130);
+    backdrop-filter: blur(80px);
+    -webkit-backdrop-filter: blur(80px);
+    z-index: 2;
+}
+
+.formulaire {
+    width: 20vw;
+    height: 60vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.champ {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    justify-items: center;
+    
+}
+
+input {
+    /* border-bottom-right-radius: 5px; */
+    outline: none;
+    height: 50px;
+    width: 20vw;
+    padding: 3px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: none;
+    font-size: 1em;
+    color: azure;
+}
+
+.champ button {
+    border-radius: 10px;
+    outline: none;
+    height: 50px;
+    width: 300px;
+    margin: 5px;
+    background-color: #5b059c;
+    border: none;
+    box-shadow: 1px 2px 5px azure;
+    font-weight: 600;
+    font-size: 1.3em;
+    color: azure;
+}
+
+.champ button:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(142, 64, 201);
+    border: 2px solid #5b059c;
+    cursor: pointer;
+    animation: slideColor 1s linear forwards;
+    box-shadow: none;
+}
+button:active{
+    animation: none;
+    background-position: 100% 50%; 
+}
+
+/* input.error {
+    border: 1px solid rgb(16, 15, 17), 149, 149);
+
+} */
+
+.error-message {
+    color: rgb(255, 0, 0);
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+    font-size: 0.8rem;
+
+    top: 10px;
+    transform: translateY(-180%);
+    color: #6c757d; /* Change la couleur du label lorsqu'il est actif */
+}
+
+
+label{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-150%);
+    color: #fffbfb; /* Couleur par défaut du label */
+    font-size: 18px;
+    pointer-events: none;
+    transition: 0.15s ease;
+}
+input::placeholder{
+    color: #fffbfb; /* Couleur par défaut du label */
+    font-size: 1em;
+    transition: 0.9s ease-in-out
+}
+label::before{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    color: #6c757d; /* Couleur par défaut du label */
+    font-size: 16px;
+    pointer-events: none;
+    transition: 1s ease-out;
+}
+
+.bubbles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    
+}
+
+.bubble {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    box-shadow:inset 1px 1px 1px #fffbfb;
+    border-radius: 50%;
+    background-color: rgba(111, 110, 110, 0.5); /* Couleur des bulles */
+    animation: bubbleAnimation 15s infinite linear;
+}
+
+/* ----------------------------Keyframes----------------------------- */
+
+@keyframes slideColor{
+   
+    0%{
+        background-color: rgb(159, 130, 182);
+        background-position: 0% 50%;
+    }
+   
+    100%{
+        background-color: rgb(255, 255, 255);
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes bubbleAnimation {
+    0% {
+        transform: translate(-50%, 100vh); /* Début en bas de la page */
+    }
+    100% {
+        transform: translate(150%, -100vh); /* Fin en haut et à droite de la page */
+    }
+}
+
+

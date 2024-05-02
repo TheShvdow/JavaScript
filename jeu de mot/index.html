@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Trouve | Mot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Jeu de frappe rapide</h1>
+  <div id="game">
+    <p>Niveau :
+      <select id="level">
+        <option value="facile">Facile</option>
+        <option value="moyen">Moyen</option>
+        <option value="intermediaire">Intermédiaire</option>
+        <option value="difficile">Difficile</option>
+      </select>
+    </p>
+    <p>Temps restant : <span id="countdown">10</span></p>
+    <p>Mot à taper : <span id="word"></span></p>
+    <input type="text" id="input" autocomplete="off">
+  </div>
+  <p id="message"></p>
+  <button id="start">Commencer</button>
+  <script src="script.js"></script>
+</body>
+</html>

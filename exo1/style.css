@@ -1,0 +1,21 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: #c1bfbf;
+    position: relative;
+}
+
+.boule{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,20%);
+    width: 400px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border-radius: 50%;
+}
