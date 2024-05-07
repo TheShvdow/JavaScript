@@ -9,6 +9,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const contentTaskInput = document.getElementById('contentTask');
     const dateChoiceInput = document.getElementById('dateChoice');
 
+    // Fonction pour formater la date en format français (jj/mm/aaaa)
+    function formatDateFrench(date) {
+        const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+        return new Date(date).toLocaleDateString('fr-FR', options);
+    }
+
     // Définit la date actuelle comme valeur par défaut pour les champs de date
     const currentDate = new Date().toISOString().split('T')[0];
     dateInput.value = formatDateFrench(currentDate);
@@ -27,41 +33,44 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     taskList.addEventListener('change', toggleTaskStatus);
-    
+
+    // Ajouter un écouteur d'événements pour le champ "À faire" pour filtrer les tâches lorsque sa valeur change
+    dateInput.addEventListener('change', filterTasks);
+
     // Fonction pour ajouter une nouvelle tâche
-    function addTask() {
-        // Récupérer le texte de la tâche et la date sélectionnée par l'utilisateur
-        const taskText = contentTaskInput.value.trim();
-        const taskDate = dateChoiceInput.value;
-        
-        // Récupérer la date d'aujourd'hui
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+    // Fonction pour ajouter une nouvelle tâche
+function addTask() {
+    // Masquer les tâches existantes
+    taskList.querySelectorAll('.task').forEach(task => {
+        task.style.display = 'none';
+    });
+
+    // Récupérer le texte de la tâche et la date sélectionnée par l'utilisateur
+    const taskText = contentTaskInput.value.trim();
+    const taskDate = dateChoiceInput.value;
     
-        // Convertir la date de la tâche en objet Date
-        const taskDateObj = new Date(taskDate);
-    
-        // Vérifier si le texte de la tâche et la date ont été saisis et si la date n'est pas antérieure à la date actuelle
-        if (taskText && taskDateObj.getTime() >= today.getTime()) {
-            // Créer un nouvel élément de tâche
-            const taskItem = document.createElement('div');
-            taskItem.innerHTML = `<input type="checkbox"> <span>${taskText}</span>`;
-            taskItem.setAttribute('data-date', taskDate);
-            
-            // Ajouter la nouvelle tâche à la liste des tâches
-            taskList.appendChild(taskItem);
-            
-            // Effacer le champ de saisie après avoir ajouté la tâche
-            contentTaskInput.value = ''; 
-        } else if(taskDate === null){
-            // Afficher un message d'alerte si la date sélectionnée est antérieure à la date actuelle ou si des champs sont vides
-            alert("Veuillez sélectionner une date valide pour la tâche !");
-        }else{
-            // Afficher un message d'alerte si la date sélectionnée est antérieure à la date actuelle ou si des champs sont vides
-            alert("Veuillez saisir une tâche  !");
-        }
+    // Récupérer la date d'aujourd'hui
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // Convertir la date de la tâche en objet Date
+    const taskDateObj = new Date(taskDate);
+
+    // Vérifier si le texte de la tâche et la date ont été saisis et si la date n'est pas antérieure à la date actuelle
+    if (taskText && taskDateObj.getTime() >= today.getTime()) {
+        // Créer un nouvel élément de tâche
+        const taskItem = document.createElement('div');
+        taskItem.innerHTML = `<input type="checkbox"> <span>${taskText}</span>`;
+        taskItem.setAttribute('data-date', taskDate);
+        taskList.appendChild(taskItem);
+        contentTaskInput.value = ''; 
+    } else if(taskDate === null){
+        alert("Veuillez sélectionner une date valide pour la tâche !");
+    }else{
+         alert("Veuillez saisir une tâche  !");
     }
-    
+}
+
     // Fonction pour supprimer une tâche
     function deleteTask() {
         const selectedTask = taskList.querySelector('input[type="checkbox"]:checked');
@@ -71,19 +80,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Fonction pour filtrer les tâches par date
-    function filterTasks() {
-        const taskDate = dateInput.value || dateChoiceInput.value;
-        const tasks = taskList.querySelectorAll('.task');
+function filterTasks() {
+    const taskDate = dateInput.value || dateChoiceInput.value;
+    const tasks = taskList.querySelectorAll('.task');
 
-        tasks.forEach(task => {
-            const taskDateAttr = task.getAttribute('data-date');
-            if (!taskDate || taskDateAttr === taskDate) {
-                task.style.display = 'block';
-            } else {
-                task.style.display = 'none';
-            }
-        });
-    }
+    tasks.forEach(task => {
+        const taskDateAttr = task.getAttribute('data-date');
+        if (!taskDate || taskDateAttr === taskDate) {
+            task.style.display = 'block';
+        } else {
+            task.style.display = 'none';
+        }
+    });
+}
+
 
     // Fonction pour basculer la sélection de toutes les tâches
     function toggleAllTasksSelection() {
@@ -129,11 +139,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 taskIndices.delete(taskItem);
             }
         }
-    }
-
-    // Fonction pour formater la date en format français (jj/mm/aaaa)
-    function formatDateFrench(date) {
-        const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-        return new Date(date).toLocaleDateString('fr-FR', options);
     }
 });

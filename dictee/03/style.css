@@ -7,7 +7,10 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: rgb(226, 220, 212);
+    background-image: url(https://wallpapercave.com/wp/wp3399371.jpg);
+    background-position: center;
+    background-size: cover;
+    background-blend-mode: darken;
     overflow: hidden;
 }
 .container{
@@ -20,23 +23,32 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #d4cebb;
     position: relative;
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.2);
 }
 .header{
     margin-top:10px;
-    height: 10vh;
+    height: 7vh;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-color: #f6f6f6;
-    font-size: 1.5em;
+    align-items: center;/* 
+    background-color: #ffffff; */
+    font-size: 1.5em;/* 
+    border: 1px solid ; */
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgb(85, 85, 216);
 }
 .header input[type="date"]{
     width: 210px;
     height: 30px;
     font-size: 1em;
+    background: none;
+    border: none;
+    color: rgb(209, 209, 210);
 }
 .content{
     position: relative;
@@ -52,10 +64,9 @@ body{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-80%);
+    transform: translate(-50%,-65%);
     width: 80%;
-    height: 30vh;
-    background-color: #ffffff;
+    height: 37vh;
     border-radius: 10px;
     margin: 10px;
     display: flex;
@@ -63,7 +74,8 @@ body{
     justify-content: start;
     align-items: flex-start;
     padding: 50px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgb(100, 95, 227);
+    flex-wrap: wrap;
 }
 .content .task input[type="checkbox"]{
     width: 30px;
@@ -81,23 +93,24 @@ body{
     height: 7vh;
     position: absolute;
     bottom: 5%;
-    left: 10%;
+    left: 11%;
     font-size: 1em;
     border: none;
-    background-color: rgb(196, 241, 231);
+    background-color:transparent;
     border-radius: 50px;
     outline: none;
     padding-left: 50px;
-
+    border: 1px solid;
 }
-
+.content input::placeholder{
+    color: rgba(240, 255, 255, 0.544);
+}
 .options{
     height: 10vh;
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #fff;
 }
 .options span{
     display: flex;
@@ -112,10 +125,26 @@ body{
     outline: none;
     float: right;
     margin-left: 10px;
-    color: rgb(79, 113, 54);
+}
+.options span input[type="date"]{
+    background-color: rgba(255, 255, 255, 0);
+    color: rgb(0, 97, 182);
 }
 .options span button{
     cursor: pointer;
+    color: rgb(255, 255, 255);
+}
+.options span:nth-child(1){
+    background-color: rgb(255, 0, 4);
+    border: none;   
+}
+.options span:nth-child(2){
+    background-color: rgb(1, 22, 255);
+    border: none; 
+}
+.options span:nth-child(3){
+    background-color: rgba(255, 255, 0, 0.564);
+    border: none; 
 }
 svg{
     height: 30px;
