@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert('Formulaire soumis avec succès');
         }
     });
+    // création des bulles // 
     const body = document.querySelector('body');
     const bubblesContainer = document.createElement('div');
     bubblesContainer.classList.add('bubbles');
@@ -24,6 +25,10 @@ document.addEventListener("DOMContentLoaded", function () {
         bubble.style.animationDelay = `${Math.random()}s`;
         bubblesContainer.appendChild(bubble);
     }
+    // Sélectionnez tous les champs d'entrée
+    
+
+
 
     /* ---------------------------------- Implémentation des fonctions --------------------------------- */
 

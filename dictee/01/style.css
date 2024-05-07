@@ -33,9 +33,11 @@ body::before {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: url(7.jpg);
+    background: url(image.jpg);
     background-position: center;
     background-size: cover;
+    background-blend-mode: darken;
+    /* opacity: 0.8; */
 }
 
 .container {
@@ -47,7 +49,7 @@ body::before {
     justify-content: center;
     align-items: center;
     border-radius: 5%;
-    border: 1px solid rgb(79, 13, 130);
+    border: 1px solid rgb(132, 166, 7);
     backdrop-filter: blur(80px);
     -webkit-backdrop-filter: blur(80px);
     z-index: 2;
@@ -81,10 +83,15 @@ input {
     width: 20vw;
     padding: 3px;
     border: none;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid azure;
     background: none;
     font-size: 1em;
     color: azure;
+}
+.champ i{
+    position: absolute;
+    right: 2%;
+    top: 40%;
 }
 
 .champ button {
@@ -93,18 +100,18 @@ input {
     height: 50px;
     width: 300px;
     margin: 5px;
-    background-color: #5b059c;
+    background-color: #F9F62D;
     border: none;
     box-shadow: 1px 2px 5px azure;
     font-weight: 600;
     font-size: 1.3em;
-    color: azure;
+    color: rgb(46, 47, 47);
 }
 
 .champ button:hover {
-    background-color: rgb(255, 255, 255);
-    color: rgb(142, 64, 201);
-    border: 2px solid #5b059c;
+    background-color: azure;
+    color: #78785c;
+    border: 2px solid #F9F62D;
     cursor: pointer;
     animation: slideColor 1s linear forwards;
     box-shadow: none;
@@ -113,15 +120,10 @@ button:active{
     animation: none;
     background-position: 100% 50%; 
 }
-
-/* input.error {
-    border: 1px solid rgb(16, 15, 17), 149, 149);
-
-} */
-
 .error-message {
-    color: rgb(255, 0, 0);
+    color: rgb(243, 81, 81);
     font-size: 14px;
+    font-weight: 500 ;
     display: block;
     margin-top: 5px;
 }
@@ -132,7 +134,7 @@ input:valid ~ label {
 
     top: 10px;
     transform: translateY(-180%);
-    color: #6c757d; /* Change la couleur du label lorsqu'il est actif */
+    color: #6c757d; 
 }
 
 
@@ -141,27 +143,28 @@ label{
     top: 50%;
     left: 0;
     transform: translateY(-150%);
-    color: #fffbfb; /* Couleur par défaut du label */
+    color: azure; 
     font-size: 18px;
     pointer-events: none;
     transition: 0.15s ease;
 }
 input::placeholder{
-    color: #fffbfb; /* Couleur par défaut du label */
+    color: azure;
+    font-weight: 600;
+    letter-spacing: 2px;
     font-size: 1em;
-    transition: 0.9s ease-in-out
-}
+    transition: 0.9s ease-in-out;
+} 
 label::before{
     position: absolute;
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    color: #6c757d; /* Couleur par défaut du label */
+    color: #6c757d; 
     font-size: 16px;
     pointer-events: none;
     transition: 1s ease-out;
 }
-
 .bubbles {
     position: absolute;
     width: 100%;
@@ -169,14 +172,13 @@ label::before{
     pointer-events: none;
     
 }
-
 .bubble {
     position: absolute;
     width: 50px;
     height: 50px;
-    box-shadow:inset 1px 1px 1px #fffbfb;
+    box-shadow:inset 1px 1px 1px rgb(55, 255, 0);
     border-radius: 50%;
-    background-color: rgba(111, 110, 110, 0.5); /* Couleur des bulles */
+    background-color: rgba(99, 97, 97, 0.5); /* Couleur des bulles */
     animation: bubbleAnimation 15s infinite linear;
 }
 
@@ -190,7 +192,7 @@ label::before{
     }
    
     100%{
-        background-color: rgb(255, 255, 255);
+        background-color: azure;
         background-position: 100% 50%;
     }
 }
